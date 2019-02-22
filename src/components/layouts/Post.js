@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, Paper, Typography } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
@@ -11,31 +11,25 @@ export default class Post extends Component {
     super(props);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
-
   }
 
   handleChangeButton = (e) => {
-    if(e.currentTarget.value == 'Delete'){
+    if(e.currentTarget.value === 'Delete'){
       this.handleDelete();
     }else{
       this.handleEdit();
     }
+    e.preventDefault();
   }
 
   handleDelete(){
     this.props.onDelete(this.props.post.id);
-    //e.preventDefault();
   }
 
   handleEdit(){
     this.props.onEdit(this.props.post);
-
     // need to re-route to edit form here, passing in post id
     this.props.history.push('/posts/edit/'+ this.props.post.id);
-
-
-
-    //e.preventDefault();
   }
   
 
@@ -69,10 +63,7 @@ export default class Post extends Component {
                     value="Edit"
                   >
                     Edit
-                  </Button>
- 
-                 
-
+                  </Button>      
                   <Button
                     variant="contained"
                     label="Default"

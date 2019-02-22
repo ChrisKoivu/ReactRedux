@@ -17,14 +17,11 @@ import {
 class PostEditForm extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       id: 0,
       title: '',
       body: ''
-    };
-
-    
+    };    
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
@@ -80,8 +77,7 @@ class PostEditForm extends Component {
                 value={this.state.title} 
                 type="text" 
               />
-            </FormControl>
-           
+            </FormControl>           
             <FormControl margin="normal" fullWidth>
               <InputLabel htmlFor="body">Body</InputLabel>
               <Input id="body" 
@@ -111,9 +107,6 @@ editPost: PropTypes.func.isRequired
 const mapStateToProps = state => ({
     posts: state.posts.posts,
     post: state.posts.post,
-    // get users from store, so we can get the
-    // name of the post authors
-    users: state.users.users
   });
   
   const mapDispatchToProps = dispatch => {
@@ -133,10 +126,7 @@ const mapStateToProps = state => ({
         dispatch(fetchUsers())
       },
     };
-  };
-
-
-  
+  };  
 export default connect(mapStateToProps, mapDispatchToProps)(PostEditForm);
 
     

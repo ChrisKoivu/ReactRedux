@@ -13,9 +13,6 @@ class Posts extends Component {
     }
   }
 
-
-  // user component needs to be loaded first for the values
-  // to be read
   getAuthorName(userId){    
     let author;
     // search the users array and return author
@@ -49,8 +46,7 @@ class Posts extends Component {
       });
     }
     return (
-      <div>
-        
+      <div>        
         <h1>Posts</h1>
         <div
            style={{
@@ -60,8 +56,7 @@ class Posts extends Component {
         }}
         >
         <Link to='/posts/add'  className="addPost"> Add Post </Link>
-        </div>
-        
+        </div>        
         {posts}
       </div>
     );
@@ -75,13 +70,8 @@ Posts.propTypes = {
   newPost: PropTypes.object
 };
 
-
-
 const mapStateToProps = state => ({
   posts: state.posts.posts,
-  //updatedPosts: state.posts.updatedPosts,
-  // get users from store, so we can get the
-  // name of the post authors
   users: state.users.users
 });
 

@@ -7,8 +7,7 @@ import {
   FormControl,
   InputLabel,
   Input,
-  Button,
-  TextField
+  Button
 } from "@material-ui/core";
 
 class ContactForm extends React.Component {
@@ -27,8 +26,7 @@ class ContactForm extends React.Component {
       }
     
     onSubmit(e) {
-        e.preventDefault();
-        
+        e.preventDefault();        
         const contact = {
           name: this.state.name,
           email: this.state.email,
@@ -54,7 +52,6 @@ class ContactForm extends React.Component {
       >
         <form style={{ width: "50%" }} onSubmit={this.onSubmit}>
           <h1>Contact Form</h1>
-
           <FormControl margin="normal" fullWidth>
             <InputLabel htmlFor="name">Name</InputLabel>
             <Input id="name" 
@@ -64,7 +61,6 @@ class ContactForm extends React.Component {
             value={this.state.name}
             />
           </FormControl>
-
           <FormControl margin="normal" fullWidth>
             <InputLabel htmlFor="email">Email</InputLabel>
             <Input id="email" 
@@ -74,15 +70,13 @@ class ContactForm extends React.Component {
             value={this.state.email}
             />
           </FormControl>
-
           <FormControl margin="normal" fullWidth>
             <InputLabel htmlFor="message">Message</InputLabel>
             <Input id="message" 
             multiline rows={10} 
             name="message"
             onChange={this.onChange}
-            value={this.state.message}
-            
+            value={this.state.message}            
             />
           </FormControl>
 

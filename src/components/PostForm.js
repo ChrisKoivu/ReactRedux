@@ -7,8 +7,7 @@ import {
   FormControl,
   InputLabel,
   Input,
-  Button,
-  TextField
+  Button
 } from "@material-ui/core";
 
 class PostForm extends Component {
@@ -28,24 +27,18 @@ class PostForm extends Component {
   }
 
   onSubmit(e) {
-    e.preventDefault();
-
-  
+    e.preventDefault();  
     const post = {
       title: this.state.title,
       body: this.state.body
     };
-
-    console.log("form submitted");
     this.props.createPost(post);
-
     this.props.history.push('/posts');
   }
   
 
   render() {
     return (
-
       <div
         style={{
           display: "flex",
