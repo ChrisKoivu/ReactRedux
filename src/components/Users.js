@@ -1,16 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchUsers } from '../actions/actions';
 import User from './layouts/User.js';
 
 
 class Users extends Component {
-
-  componentWillMount() {
-     this.props.fetchUsers();
-  }
-    
   render() {
     let users;
     if(this.props.users){
@@ -21,20 +15,17 @@ class Users extends Component {
       });
     }
     return (
-      <div>
-        
-        <h1>Users</h1>
-        <div
-           style={{
-            float:"left",
-            marginBottom: 50,
-            marginLeft:20
-        }}
-        >
-        
-        </div>
-        
-        {users}
+      <div>        
+          <h1>Users</h1>
+          <div
+            style={{
+              float:"left",
+              marginBottom: 50,
+              marginLeft:20
+          }}
+          >        
+          </div>        
+          {users}
       </div>
     );
   }
@@ -42,7 +33,6 @@ class Users extends Component {
 }
 
   Users.propTypes = {
-    fetchUsers: PropTypes.func.isRequired,
     users: PropTypes.array.isRequired
   };
 
@@ -50,4 +40,4 @@ class Users extends Component {
     users: state.users.users
   });
   
-  export default connect(mapStateToProps, { fetchUsers })(Users);
+  export default connect(mapStateToProps)(Users);
