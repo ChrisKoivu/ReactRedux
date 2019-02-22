@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { editPost } from '../actions/actions';
 import { updatePost } from '../actions/actions';
-import { fetchUsers } from '../actions/actions';
-import { fetchPosts } from '../actions/actions';
-
 
 import {
   FormControl,
@@ -111,19 +107,9 @@ const mapStateToProps = state => ({
   
   const mapDispatchToProps = dispatch => {
     return { 
-      // retrieving users to get author names
-      fetchPosts: () => {
-        dispatch(fetchPosts())
-      },     
+      // save changes to the post array 
       updatePost: (item) => {
           dispatch(updatePost(item))
-      },
-      editPost: (item) => {
-        dispatch(editPost(item))
-      },
-      // retrieving users to get author names
-      fetchUsers: () => {
-        dispatch(fetchUsers())
       },
     };
   };  
