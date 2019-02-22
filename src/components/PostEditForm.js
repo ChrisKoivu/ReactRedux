@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { updatePost } from '../actions/actions';
 
@@ -32,7 +31,6 @@ class PostEditForm extends Component {
       )
       
   }
-
   
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -49,9 +47,6 @@ class PostEditForm extends Component {
     this.props.updatePost(post);
     this.props.history.push('/posts'); 
   }
-  
-  
- 
 
   render() {
     return (
@@ -96,13 +91,8 @@ class PostEditForm extends Component {
   }
 }
 
-PostEditForm.propTypes = {
-editPost: PropTypes.func.isRequired
-};
-
-const mapStateToProps = state => ({
-    posts: state.posts.posts,
-    post: state.posts.post,
+ const mapStateToProps = state => ({
+    post: state.posts.post
   });
   
   const mapDispatchToProps = dispatch => {
