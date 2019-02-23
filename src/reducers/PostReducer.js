@@ -1,4 +1,5 @@
 import { FETCH_POSTS, ADD_POST, DELETE_POST, UPDATE_POST, EDIT_POST } from '../actions/actionTypes';
+import * as functions from '../utility/functions.js';
 
 const initialState = {
   posts:[],
@@ -33,7 +34,8 @@ export default function(state = initialState, action) {
     case UPDATE_POST:
       return {
         ...state,
-        posts: updateObjectInArray(state.posts, action.payload)
+        // returns new immutable state object
+        posts: functions.updateObjectInArray(state.posts, action.payload)
       };      
     
     default:
@@ -41,18 +43,3 @@ export default function(state = initialState, action) {
   }
 }
 
-
-function updateObjectInArray(array, post) {
-  return array.map( (item => {
-      if(post.id !== item.id) {
-          // This isn't the item we care about - keep it as-is
-          return item;
-      }
-      
-      // Otherwise, this is the one we want - return an updated value
-      return {
-          ...item,
-          ...post
-      }; 
-  }));
-}

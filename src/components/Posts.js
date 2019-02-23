@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import * as functions from '../utility/functions.js';
 import { connect } from 'react-redux';
 import { deletePost, editPost } from '../actions/actions';
 import Post from './layouts/Post.js';
@@ -11,36 +12,21 @@ class Posts extends Component {
     if (nextProps.newPost) {
       this.props.posts.unshift(nextProps.newPost);
     }
-  }
-
-  getAuthorName(userId){    
-    let author;
-    // search the users array and return author
-    if(
-        author = this.props.users.find(user => {      
-           return user.id === userId;     
-        })
-    )
-    {
-        // if we found the author above, get their name
-        return 'By ' + author.name;
-    } else {
-      return null;
-    }
-  }
+  } 
   
   render() {
     let posts;
     if(this.props.posts){
       posts = this.props.posts.map((post,index) => {
-        let author = this.getAuthorName(post.userId);
+        // get author name for the post from the user array
+        let author = functions.getAuthorName(this.props.users, post.userId);
         return(      
           <Post key = {index} 
             post={post} 
             history={this.props.history}
             onDelete={this.props.deletePost} 
             onEdit={this.props.editPost}
-            author={this.getAuthorName(post.userId)}
+            author={author}
           />
         )
       });

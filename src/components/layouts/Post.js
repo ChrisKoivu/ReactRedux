@@ -33,8 +33,7 @@ export default class Post extends Component {
   }
   
 
-  render() {  
-    if(!isObjectEmpty(this.props.post)){
+  render() {     
       return (
         <div style={{ 
             marginTop: 20, 
@@ -44,7 +43,7 @@ export default class Post extends Component {
             marginRight:"auto" 
         }}>
     
-        <Grid  container spacing={40} justify="center">
+         <Grid  container spacing={40} justify="center">
             <Grid item >
               <Card>                  
                   <CardContent>
@@ -74,20 +73,10 @@ export default class Post extends Component {
                   </Button>            
               </Card>
             </Grid>
-        </Grid>
-  </div>
-      )
-    }else{
-      return null;
-    }
+         </Grid>
+       </div>
+      )  
   } // end of render function
 } // end of post class
 
-// verify object is not empty. we dont want to render 
-function isObjectEmpty(obj) {
-  for(var key in obj) {
-      if(obj.hasOwnProperty(key))
-          return false;
-  }
-  return true;
-}
+
